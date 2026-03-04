@@ -997,9 +997,9 @@ window.initCustomMap = (function() {
     if(hasK){
       childG=E('g',{visibility:EXPANDED.has(key)?'visible':'hidden'},g);
       if(!EXPANDED.has(key)) childG.style.pointerEvents='none';
-      const dist=d===1?220:d===2?182:d===3?150:122;
+      const baseDist=d===1?220:d===2?182:d===3?150:122;const dist=kids.length>1?Math.max(baseDist,kids.length*(nw(d+1)+14)/(2*Math.PI)):baseDist;
       const spans=kids.map(c=>span(c,d+1,dist)),total=spans.reduce((s,a)=>s+a,0);
-      const fan=Math.min(Math.PI*0.88,total),scale=fan/Math.max(total,0.001);
+      const fan=Math.min(Math.PI*2,total),scale=fan/Math.max(total,0.001);
       let cum=angle-fan/2;
       kids.forEach((child,ci)=>{const s=spans[ci]*scale,ca=cum+s/2;cum+=s;draw(childG,child,x+Math.cos(ca)*dist,y+Math.sin(ca)*dist,ca,d+1,col,st,x,y);});
     }
