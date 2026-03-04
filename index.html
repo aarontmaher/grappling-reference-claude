@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<style>
-:root {
+<style
+:root 
   --bg: #0a0c10;
   --surface: #0f1218;
   --surface2: #13161e;
@@ -2955,7 +2955,7 @@ window.initCustomMap = (function () {
       rootG = document.createElementNS(NS, 'g');
       rootG.id = 'cmRoot';
       svg.appendChild(rootG);
-      tx = 0; ty = 0; sc = 0.55;
+      sc = 0.55; tx = W/2*(1-sc); ty = H/2*(1-sc);
 
       // Pan
       wrap.addEventListener('mousedown', e => { panning = true; panX = e.clientX; panY = e.clientY; });
@@ -2979,7 +2979,7 @@ window.initCustomMap = (function () {
 
       document.getElementById('cmZoomIn').addEventListener('click',  () => { sc = Math.min(sc * 1.2, 5);   applyT(); });
       document.getElementById('cmZoomOut').addEventListener('click', () => { sc = Math.max(sc * 0.83, 0.05); applyT(); });
-      document.getElementById('cmReset').addEventListener('click',   () => { tx = 0; ty = 0; sc = 0.55; applyT(); });
+      document.getElementById('cmReset').addEventListener('click',   () => { sc = 0.55; tx = W/2*(1-sc); ty = H/2*(1-sc); applyT(); });
 
       // Collapse / Expand all
       document.getElementById('cmCollapseAll').addEventListener('click', () => {
